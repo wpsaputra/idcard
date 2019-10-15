@@ -13,7 +13,7 @@ export default function IdCard({match, location}) {
         // setState({ count: state.count + 1 });
         // axios.get(url_api+'/records/anime/'+match.params.animeId+'?join=genre')
         // axios.get(url_api+'/records/anime?filter=link,eq,'+match.params.animeId+'&join=genre&join=rating&join=source&join=status&join=studio&join=type')
-        axios.get('https://webapps.bps.go.id/sultra/idcard/api.php/records/idcard/'+match.params.niplama)
+        axios.get('https://webapps.bps.go.id/sultra/idcard/api.php/records/idcard/'+match.params.niplama+'?join=instansi')
             .then(function (response) {
                 // handle success
                 console.log(response.data);
@@ -81,8 +81,20 @@ export default function IdCard({match, location}) {
                                     {/* <li><a href="#"><i className="lnr lnr-phone-handset"></i> +62 813-5128-9800</a></li> */}
                                     {/* <li><a href="#"><i className="lnr lnr-envelope"></i>edimahmud@bps.go.id</a></li> */}
                                     <li><a href="#"><i className="lnr lnr-envelope"></i>{state.pegawai.email}</a></li>
-                                    <li><a href="#"><i className="lnr lnr-home"></i> BPS Provinsi Sulawesi Tenggara, </a></li>
-                                    <li style={{marginTop: "-20px"}}><a href="#"><i className="lnr lnr-home" style={{visibility: "hidden"}}></i> Jl. Boulevard No 1 Mokoau, Kambu, Kendari, Sulawesi Tenggara </a></li>
+                                    {/* <li><a href="#"><i className="lnr lnr-home"></i> BPS Provinsi Sulawesi Tenggara, </a></li> */}
+                                    {/* <li style={{marginTop: "-20px"}}><a href="#"><i className="lnr lnr-home" style={{visibility: "hidden"}}></i> Jl. Boulevard No 1 Mokoau, Kambu, Kendari, Sulawesi Tenggara </a></li> */}
+                                    {/* <li><a href="#"><i className="lnr lnr-home"></i> {state.pegawai.id_satker.instansi+","} </a></li> */}
+                                    {typeof state.pegawai.id_satker!=='undefined' ? (
+                                        <li><a href="#"><i className="lnr lnr-home"></i> {state.pegawai.id_satker.instansi} </a></li>
+                                    ) : (
+                                        <></>
+                                    )}
+                                    {typeof state.pegawai.id_satker!=='undefined' ? (
+                                        // <li><a href="#"><i className="lnr lnr-home"></i> {state.pegawai.id_satker.instansi} </a></li>
+                                        <li style={{marginTop: "-20px"}}><a href="#"><i className="lnr lnr-home" style={{visibility: "hidden"}}></i> {state.pegawai.id_satker.alamat} </a></li>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </ul>
                                 {state.isNotFound ? (
                                     // <Redirect to={{pathname: '/404'}} />

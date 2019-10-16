@@ -63,7 +63,7 @@ export default function IdCard({match, location}) {
                         <div className="media">
                             <div className="d-flex">
                             {/* <img src="./images/edy.png" alt=""/> */}
-                            <img src={"https://webapps.bps.go.id/sultra/idcard/images/"+state.pegawai.niplama+".jpg"} alt=""/>
+                            <img src={"https://webapps.bps.go.id/sultra/idcard/images/"+state.pegawai.niplama+".png"} alt=""/>
                             </div>
                             <div className="media-body">
                             <div className="personal_text">
@@ -91,7 +91,7 @@ export default function IdCard({match, location}) {
                                     )}
                                     {typeof state.pegawai.id_satker!=='undefined' ? (
                                         // <li><a href="#"><i className="lnr lnr-home"></i> {state.pegawai.id_satker.instansi} </a></li>
-                                        <li style={{marginTop: "-20px"}}><a href="#"><i className="lnr lnr-home" style={{visibility: "hidden"}}></i> {state.pegawai.id_satker.alamat} </a></li>
+                                        <li style={{marginTop: "-20px"}}><a href="#" style={{display: "inline-block"}}><i className="lnr lnr-home" style={{visibility: "hidden"}}></i> {state.pegawai.id_satker.alamat} </a></li>
                                     ) : (
                                         <></>
                                     )}
